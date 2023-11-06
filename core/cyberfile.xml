@@ -87,6 +87,7 @@
   <depend repo_name="perception-radar-detection" type="binary">perception-radar-detection</depend>
   <depend repo_name="perception-radar4d-detection" type="binary">perception-radar4d-detection</depend>
   <depend repo_name="perception-tools" type="binary">perception-tools</depend>
+  <depend repo_name="perception-launch" type="binary">perception-launch</depend>
   <depend repo_name="perception-traffic-light-detection" type="binary">perception-traffic-light-detection</depend>
   <depend repo_name="perception-traffic-light-recognition" type="binary">perception-traffic-light-recognition</depend>
   <depend repo_name="perception-traffic-light-region-proposal" type="binary">perception-traffic-light-region-proposal</depend>
