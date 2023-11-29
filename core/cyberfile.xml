@@ -148,7 +148,9 @@
   <!-- v2x -->
   <depend repo_name="v2x" type="binary">v2x</depend>
 
-  <depend repo_name="apollo-scripts" type="binary">apollo-scripts</depend>
+  <depend repo_name="sim-obstacle" type="binary">sim-obstacle</depend>
+  <depend repo_name="studio-connector" type="binary">studio-connector</depend>
+
 
   <builder>bazel</builder>
 </package>
