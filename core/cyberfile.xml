@@ -39,8 +39,6 @@
   <depend repo_name="dreamview" type="binary">dreamview</depend>
   <depend repo_name="dreamview-plus" type="binary">dreamview-plus</depend>
   <depend repo_name="monitor" type="binary">monitor</depend>
-  <depend repo_name="studio-connector" type="binary">studio-connector</depend>
-  <depend repo_name="sim-obstacle" type="binary">sim-obstacle</depend>
 
   <!-- driveres -->
   <depend repo_name="drivers-camera" type="binary">drivers-camera</depend>
@@ -111,7 +109,6 @@
   <depend repo_name="planning-scenario-valet-parking" type="binary">planning-scenario-valet-parking</depend>
   <depend repo_name="planning-scenario-yield-sign" type="binary">planning-scenario-yield-sign</depend>
   <depend repo_name="planning-task-fallback-path" type="binary">planning-task-fallback-path</depend>
-  <depend repo_name="planning-task-fast-stop-trajectory-fallback" type="binary">planning-task-fast-stop-trajectory-fallback</depend>
   <depend repo_name="planning-task-lane-borrow-path" type="binary">planning-task-lane-borrow-path</depend>
   <depend repo_name="planning-task-lane-change-path" type="binary">planning-task-lane-change-path</depend>
   <depend repo_name="planning-task-lane-follow-path" type="binary">planning-task-lane-follow-path</depend>
@@ -150,6 +147,8 @@
 
   <!-- v2x -->
   <depend repo_name="v2x" type="binary">v2x</depend>
+
+  <depend repo_name="apollo-scripts" type="binary">apollo-scripts</depend>
 
   <builder>bazel</builder>
 </package>
