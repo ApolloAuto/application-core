@@ -1,0 +1,26 @@
+cyber_modules {
+  key: "Lidar"
+  value: {
+    dag_files: "/apollo/modules/drivers/lidar/dag/lidar.dag"
+  }
+}
+cyber_modules {
+  key: "GPS"
+  value: {
+    dag_files: "/apollo/modules/drivers/gnss/dag/gnss.dag"
+  }
+}
+cyber_modules {
+  key: "Localization"
+  value: {
+    dag_files: "/apollo/modules/localization/dag/dag_streaming_rtk_localization.dag"
+  }
+}
+cyber_modules {
+  key: "Transform"
+  value: {
+    dag_files: "/apollo/modules/transform/dag/static_transform.dag"
+  }
+}
+operations: None
+default_operation: None

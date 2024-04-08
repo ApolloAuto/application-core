@@ -1,0 +1,73 @@
+error_message {
+    item_code : LaneTooNarrowWarn
+    level : Warning
+    title : "Narrow Road Warning"
+}
+
+error_message {
+    item_code : LaneTooWideWarn
+    level : Warning
+    title : "Wide Road Warning"
+}
+
+error_message {
+    item_code : LaneCurvatureTooLargeWarn
+    level : Warning
+    title : "Lane Curvature Too Large Warn"
+}
+
+error_message {
+    item_code: LaneCentralCurveNotForwardError
+    level : Error
+    title : "lane central curve not forward"
+}
+
+error_message {
+    item_code: SignalCannotAssociateLaneError
+    level : Error
+    title : "traffic signal cannot associate to any lane id"
+}
+error_message {
+    item_code: SpeedBumpCannotAssociateLaneError
+    level : Error
+    title : "speed bump cannot associate to any lane id"
+}
+error_message {
+    item_code: ParkingSpaceCannotAssociateLaneError
+    level : Error
+    title : "parking space cannot associate to any lane id"
+}
+error_message {
+    item_code: CrossWalkCannotAssociateLaneError
+    level : Error
+    title : "crosswalk cannot associate to any lane id"
+}
+
+error_message {
+    item_code: ParkingSpaceWidthTooSmallError
+    level : Error
+    title : "parking space width too small"
+}
+
+error_message {
+    item_code: ParkingSpaceLengthTooSmallError
+    level : Error
+    title : "parking space length too small"
+}
+
+error_message {
+    item_code: ParkingSpaceWidthTooLargeWarning
+    level : Warning
+    title : "parking space width too large"
+}
+
+error_message {
+    item_code: ParkingSpaceLengthTooLargeWarning
+    level : Warning
+    title : "parking space length too large"
+}
+error_message {
+    item_code: ParkingSpaceNotRectangle
+    level : Normal
+    title : "parking space is not a rectangle"
+}
