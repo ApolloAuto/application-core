@@ -15,6 +15,8 @@ check_overlap_config {
     enable_speed_bump_overlap_lane_check : true;
     enable_parking_overlap_lane_check : true;
     enable_cross_walk_overlap_lane_check : true;
+    enable_yield_sign_overlap_lane_check : true;
+    enable_stop_sign_overlap_lane_check : true;
 }
 
 check_parking_space_size_config {
