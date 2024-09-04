@@ -105,12 +105,6 @@
   <!-- v2x -->
   <depend repo_name="v2x" type="binary">v2x</depend>
 
-  <depend repo_name="sim-obstacle" type="binary">sim-obstacle</depend>
-  <depend repo_name="studio-connector" type="binary">studio-connector</depend>
-
-  <!-- toolbox -->
-  <depend repo_name="dreamview-plus-toolbox-installer" type="binary">dreamview-plus-toolbox-installer</depend>
-
 
   <builder>bazel</builder>
 </package>
