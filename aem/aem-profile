@@ -88,9 +88,11 @@ apollo_profile_use() {
 parse_arguments() {
   case "$1" in
     list)
-      apollo_profile_list
+      shift
+      apollo_profile_list "$@"
       ;;
     use)
+      shift
       apollo_profile_use "$@"
       ;;
     --help | -h)

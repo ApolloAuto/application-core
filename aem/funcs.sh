@@ -225,7 +225,7 @@ apollo_env_exists() {
       exit 1
     fi
   else
-    return 0
+    return 1
   fi
 }
 export -f apollo_env_exists
@@ -447,13 +447,7 @@ apollo_determine_image() {
   local image="${APOLLO_ENV_CONTAINER_IMAGE}"
   if [[ -z "${image}" ]]; then
     local repo="${APOLLO_ENV_CONTAINER_REPO:-${DOCKER_REPO}}"
-    local tag="-9.0"
-    if [[ `uname -m` == "x86_64" ]]; then
-      tag="${tag}-jammy-preview"
-    else
-      tag="${tag}-preview"
-    fi
-    tag="${APOLLO_ENV_CONTAINER_TAG:-${VERSION:${tag}}}"
+    local tag="${APOLLO_ENV_CONTAINER_TAG:-${VERSION}}"
     local target_arch="$(uname -m)"
     if [[ -n "${APOLLO_ENV_CROSS_PLATFORM}" ]]; then
       target_arch="${APOLLO_ENV_CROSS_PLATFORM}"
