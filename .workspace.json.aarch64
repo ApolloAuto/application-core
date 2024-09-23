@@ -1,0 +1,6 @@
+{
+    "repositories" : [
+        {"name": "apollo-tools-arm", "version": "9.0.0-rc-r13"},
+        {"name": "apollo-core-arm", "version": "9.0.0-rc-r13"}
+    ]
+}
