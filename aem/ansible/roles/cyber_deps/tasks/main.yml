@@ -37,7 +37,7 @@
 - name: Add sysroot to ldconfig
   become: true
   ansible.builtin.lineinfile:
-    path: /etc/ld.so.conf.d/apollo.conf
+    path: /etc/ld.so.conf.d/apolloauto.conf
     line: /opt/apollo/sysroot/lib
     create: yes
 

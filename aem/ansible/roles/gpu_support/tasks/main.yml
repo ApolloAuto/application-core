@@ -6,13 +6,13 @@
   ansible.builtin.shell:
     cmd: |
       distro_version={{ ansible_distribution_version }}
-      distro="{{ ansible_distribution|lower }}$(echo ${distro_version} | tr -d '.')}"
+      distro="{{ ansible_distribution|lower }}$(echo ${distro_version} | tr -d '.')"
       arch={{ ansible_architecture }}
       if [[ "${arch}" == "aarch64" ]]; then
         arch="arm64"
       fi
 
-      wget https://developer.download.nvidia.com/compute/cuda/repos/${distro}/${arch}/cuda-archive-keyring.gpg -O /usr/share/keyrings/cuda-archive-keyring.gpg
+      wget https://developer.download.nvidia.com/compute/cuda/repos/${distro}/${arch}/cuda-archive-keyring.gpg -O - | gpg --dearmor --yes -o /usr/share/keyrings/cuda-archive-keyring.gpg
       echo "deb [signed-by=/usr/share/keyrings/cuda-archive-keyring.gpg] https://developer.download.nvidia.com/compute/cuda/repos/${distro}/${arch}/ /" | tee /etc/apt/sources.list.d/cuda-${distro}-${arch}.list
       wget https://developer.download.nvidia.com/compute/cuda/repos/${distro}/${arch}/cuda-${distro}.pin -O /etc/apt/preferences.d/cuda-repository-pin-600
       apt update

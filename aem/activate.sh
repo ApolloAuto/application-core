@@ -62,10 +62,12 @@ function pathappend() {
 }
 
 function generate_ld_library_path() {
-  cat ${APOLLO_ENV_ROOT}/etc/ld.so.conf.d/apollo.conf |
-    grep -v -E '^\s*$' |
-    grep -v -E '^\s*#.*$' |
-    tr '\n' ':'
+  if [[ -e "${APOLLO_ENV_ROOT}/etc/ld.so.conf.d/apollo.conf" ]]; then
+    cat ${APOLLO_ENV_ROOT}/etc/ld.so.conf.d/apollo.conf |
+      grep -v -E '^\s*$' |
+      grep -v -E '^\s*#.*$' |
+      tr '\n' ':'
+  fi
 }
 
 deactivate() {
@@ -138,6 +140,7 @@ backup_env LD_LIBRARY_PATH
 # # TODO: move to APOLLO_ENV_ROOT
 # pathprepend "/usr/local/fast-rtps/lib" LD_LIBRARY_PATH
 # pathprepend "/usr/local/libtorch_gpu/lib" LD_LIBRARY_PATH
+export LD_LIBRARY_PATH="$(generate_ld_library_path)"
 
 backup_env PYTHONPATH
 pathprepend "${APOLLO_ENV_ROOT}/opt/apollo/neo/python" PYTHONPATH
@@ -151,6 +154,7 @@ PS1="\[\e[31m\][\[\e[m\]\[\e[32m\]\u\[\e[m\]\[\e[33m\]@\[\e[m\]\[\e[35m\]\h\[\e[
 
 alias ls='ls --color=auto'
 alias buildtool='_abt() {
+    export LD_LIBRARY_PATH="$(generate_ld_library_path)"
     command buildtool "$@"
     export LD_LIBRARY_PATH="$(generate_ld_library_path)"
 };_abt'

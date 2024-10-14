@@ -33,24 +33,3 @@ if ldconfig -p | grep -q "libabsl_base.so"; then
   info "Found existing Abseil installation. Reinstallation skipped."
   exit 0
 fi
-
-# fallback
-SRC_URI="${SRC_URI:-https://github.com/abseil/abseil-cpp/archive/refs/tags/${PV}.tar.gz -> ${PN}-${PV}.tar.gz}"
-
-# overrides
-src_configure() {
-  mkdir -p "${WORKDIR}/${PF}_build"
-  pushd "${WORKDIR}/${PF}_build"
-  cmake "${WORKDIR}/${PF}" \
-    -DBUILD_SHARED_LIBS=ON \
-    -DCMAKE_CXX_STANDARD=17 \
-    -DCMAKE_INSTALL_PREFIX=${INSTALL_PREFIX}
-  popd
-}
-
-if [[ "${BASH_SOURCE[0]}" != "${0}" ]]; then
-  # Being sourced, do nothing
-  :
-else
-  install_package "$@"
-fi
