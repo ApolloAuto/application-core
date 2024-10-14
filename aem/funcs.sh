@@ -312,10 +312,10 @@ apollo_create_hostenv() {
   if [[ ${UID} == 0 ]]; then
     # running as root
     pip3 install pipx jinja2 requests
-    apt install -y python3-apt
+    apt install -y python3-apt python3-venv rsync tree
   else
     pip3 install --user pipx jinja2 requests
-    sudo apt install -y python3-apt
+    sudo apt install -y python3-apt python3-venv rsync tree
   fi
   pipx install --include-deps ansible
   pipx ensurepath
