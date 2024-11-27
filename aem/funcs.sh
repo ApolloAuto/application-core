@@ -317,8 +317,9 @@ apollo_create_hostenv() {
     pip3 install --user pipx jinja2 requests
     sudo apt install -y python3-apt python3-venv rsync tree
   fi
-  pipx install --include-deps ansible
-  pipx ensurepath
+  python3 -m pipx install --include-deps ansible
+  python3 -m pipx ensurepath
+  # TODO: support other shells
   source "${HOME}/.bashrc"
   pushd "${AEM_HOME}" > /dev/null
   # update ansible scripts
@@ -349,10 +350,10 @@ apollo_create_hostenv() {
 
   # install buildtool
   # TODO: fetch from remote
-  local buildtool_version="9.0.0-rc1-r19"
+  local buildtool_version="10.0.0-beta-r1"
   # dpkg -x "/apollo_workspace/apollo-neo-buildtool_${buildtool_version}_amd64.deb" "${APOLLO_ENV_ROOT}"
   install -d -m 755 "${APOLLO_ENV_ROOT}/opt/apollo/neo/packages/buildtool/${buildtool_version}"
-  wget -c "https://apollo-system.cdn.bcebos.com/archive/9.0/buildtool-${buildtool_version}.tar.gz" -O - | tar -zx -C "${APOLLO_ENV_ROOT}/opt/apollo/neo/packages/buildtool/${buildtool_version}" --strip-components=1
+  wget -c "https://apollo-system.cdn.bcebos.com/archive/10.0/buildtool-${buildtool_version}.tar.gz" -O - | tar -zx -C "${APOLLO_ENV_ROOT}/opt/apollo/neo/packages/buildtool/${buildtool_version}" --strip-components=1
   subenv "${AEM_HOME}/buildtool.conf.tpl" "${APOLLO_ENV_ROOT}/opt/apollo/neo/packages/buildtool/${buildtool_version}/config/module.conf"
   ln -snf "${APOLLO_ENV_ROOT}/opt/apollo/neo/packages/buildtool/${buildtool_version}" "${APOLLO_ENV_ROOT}/opt/apollo/neo/packages/buildtool/latest"
   install -d -m 755 "${APOLLO_ENV_ROOT}/opt/apollo/neo/bin"
@@ -605,6 +606,9 @@ apollo_create_container_volume_options() {
   # TODO: will be removed in the future
   fix_mounts=(
     "${APOLLO_ENV_WORKSPACE}/data:/apollo/data"
+    "${APOLLO_ENV_WORKSPACE}/data:/opt/apollo/neo/data"
+    "${APOLLO_ENV_WORKSPACE}/data/log:/opt/apollo/neo/data/log"
+    "${APOLLO_ENV_WORKSPACE}/data/log:/apollo/data/log"
     "${APOLLO_ENV_WORKSPACE}/output:/apollo/output"
     "${APOLLO_ENV_WORKSPACE}/log:/apollo/log"
     "${APOLLO_ENV_WORKSPACE}/data/calibration_data:/apollo/modules/calibration/data"
@@ -668,6 +672,8 @@ apollo_container_created_post_action() {
   apollo_execute_cmd_in_container "apt update && apt install --only-upgrade -y ${init_packages[@]}"
   apollo_execute_cmd_in_container "mkdir -pv /opt/apollo/neo/etc && chmod 777 -R /opt/apollo/neo/etc"
   apollo_container_created_start_user
+  apollo_execute_cmd_in_container "mkdir -pv /apollo_workspace/data/{log,bag,record} &&
+          chown -R ${APOLLO_ENV_CONTAINER_USER}:${APOLLO_ENV_CONTAINER_GROUP} /apollo_workspace/data/"
   apollo_container_download_arm_lib
 }
 export -f apollo_container_created_post_action
@@ -705,6 +711,10 @@ apollo_create_container_env_options() {
 
   # shell history
   env_opts+=('-e' "HISTFILE=${APOLLO_ENV_WORKROOT}/.cache/.bash_history")
+
+  # eplite
+  cat /etc/bash.bashrc | grep AIPE_WITH_UNIX_DOMAIN_SOCKET >/dev/null 2>&1
+  [[ $? == 0 ]] && env_opts+=('-e' "AIPE_WITH_UNIX_DOMAIN_SOCKET=ON")
 
   echo "${env_opts[*]}"
 }
