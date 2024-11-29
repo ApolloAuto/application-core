@@ -635,6 +635,11 @@ apollo_execute_cmd_in_container() {
 }
 export -f apollo_execute_cmd_in_container
 
+apollo_container_execute_cmd() {
+  "${DOCKER}" exec -u "${APOLLO_ENV_CONTAINER_USER}" "${APOLLO_ENV_CONTAINER_NAME}" bash -c "$*"
+}
+export -f apollo_container_execute_cmd
+
 apollo_container_created_start_user() {
   user="${SUDO_USER-$USER}"
   container_bin_path="/usr/local/bin/"
@@ -674,6 +679,9 @@ apollo_container_created_post_action() {
   apollo_container_created_start_user
   apollo_execute_cmd_in_container "mkdir -pv /apollo_workspace/data/{log,bag,record} &&
           chown -R ${APOLLO_ENV_CONTAINER_USER}:${APOLLO_ENV_CONTAINER_GROUP} /apollo_workspace/data/"
+  apollo_container_execute_cmd "buildtool -v"
+  # TODO: migrate to active script like host env
+  apollo_container_execute_cmd "echo [[ -e /opt/apollo/neo/setup.sh ]] \&\& source /opt/apollo/neo/setup.sh >> /home/${APOLLO_ENV_CONTAINER_USER}/.bashrc"
   apollo_container_download_arm_lib
 }
 export -f apollo_container_created_post_action
@@ -713,7 +721,7 @@ apollo_create_container_env_options() {
   env_opts+=('-e' "HISTFILE=${APOLLO_ENV_WORKROOT}/.cache/.bash_history")
 
   # eplite
-  cat /etc/bash.bashrc | grep AIPE_WITH_UNIX_DOMAIN_SOCKET >/dev/null 2>&1
+  cat /etc/bash.bashrc | grep AIPE_WITH_UNIX_DOMAIN_SOCKET > /dev/null 2>&1
   [[ $? == 0 ]] && env_opts+=('-e' "AIPE_WITH_UNIX_DOMAIN_SOCKET=ON")
 
   echo "${env_opts[*]}"
