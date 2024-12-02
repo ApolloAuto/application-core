@@ -543,9 +543,6 @@ apollo_create_container_volume_options() {
   volume_opts+=('-v' '/dev:/dev')
   # shared directories
   volume_opts+=('-v' '/media:/media')
-  # local time and timezone
-  volume_opts+=('-v' '/etc/localtime:/etc/localtime:ro')
-  volume_opts+=('-v' '/etc/timezone:/etc/timezone:ro')
   # X
   volume_opts+=('-v' '/tmp/.X11-unix:/tmp/.X11-unix:rw')
   # kernel modules
