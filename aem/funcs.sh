@@ -639,7 +639,7 @@ export -f apollo_container_execute_cmd
 
 apollo_container_created_start_user() {
   user="${SUDO_USER-$USER}"
-  container_bin_path="/usr/local/bin/"
+  container_bin_path="/opt/apollo/pkgs/"
 
   if [ "${user}" != "root" ]; then
     apollo_execute_cmd_in_container "bash -c ${container_bin_path}/aem/docker_start_user.sh"
@@ -666,10 +666,12 @@ apollo_container_created_post_action() {
     'apollo-neo-buildtool'
   )
   aem_path="${AEM_HOME}"
-  container_bin_path="/usr/local/bin/"
+  container_bin_path="/opt/apollo/pkgs/"
 
   ${DOCKER} cp "${aem_path}" "${APOLLO_ENV_CONTAINER_NAME}":"${container_bin_path}aem"
   apollo_execute_cmd_in_container "ln -snf ${container_bin_path}/aem/run.sh /usr/bin/aem"
+  apollo_execute_cmd_in_container "ln -snf ${container_bin_path}/aem/auto_complete.bash /etc/bash_completion.d/aem"
+  apollo_execute_cmd_in_container "ln -snf ${container_bin_path}/aem/auto_complete.zsh /usr/share/zsh/functions/Completion/Unix/_aem"
   apollo_execute_cmd_in_container "[[ $(uname -m) == "aarch64" ]] && [[ -e /sys/kernel/debug ]] && chmod +rx /sys/kernel/debug"
   apollo_execute_cmd_in_container "apt update && apt install --only-upgrade -y ${init_packages[@]}"
   apollo_execute_cmd_in_container "mkdir -pv /opt/apollo/neo/etc && chmod 777 -R /opt/apollo/neo/etc"
