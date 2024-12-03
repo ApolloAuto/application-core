@@ -1,0 +1,26 @@
+collect_strategy {
+    speed_min: 0.0 # 最小速度
+    speed_max: 7.0 # 最大速度
+    low_speed_point: 2.0 # 小速度区分界点
+    high_speed_point: 5.0 # 大速度区分界点
+    speed_steps: 10 # 坐标系speed轴步数
+    
+    throttle_min: 5.0 # 最小油门
+    throttle_max: 95.0 # 最大油门
+    light_throttle_point: 20.0 # 小油门区分界点
+    heavy_throttle_point: 70.0 # 大油门区分界点
+    throttle_steps: 10 # 坐标系throttle轴步数
+
+    brake_min: 5.0 # 最小刹车
+    brake_max: 95.0 # 最大刹车
+    light_brake_point: 30.0 # 小刹车区分界点
+    heavy_brake_point: 70.0 # 大刹车区分界点
+    brake_steps: 10 # 坐标系brake轴步数
+    max_abs_speed_when_stopped: 0.1 # 小于该值时认为车辆静止
+
+    area_total_points: 4000 # 场景最少点数
+    train_percentage: 0.9 # 训练数据占比
+    min_collection_percentage_to_calib: 0.8 # 允许计算结果的最小进度
+}
+calibration_data_path: "/apollo/data/calibration/vehicle_calibration"
+output_filename: "/apollo/modules/control/control_component/conf/calibration_table.pb.txt"

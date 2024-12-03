@@ -1,0 +1,18 @@
+header:
+  seq: 0
+  stamp:
+    secs: 0
+    nsecs: 0
+  frame_id: lidar16_back
+child_frame_id: camera_front_12mm
+transform:
+  rotation:
+    x: -0.48973192318631953
+    y: 0.50260893507674853
+    z: -0.50447540929487256
+    w: 0.50304220817940959
+  translation:
+    x: 0.88103351319472234
+    y: 0.13618208840939339
+    z: -0.27080376161072256
+

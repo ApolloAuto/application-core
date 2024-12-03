@@ -18,6 +18,13 @@ Apollob包管理开发调试样例工程，使用方法参考[包管理安装方
 
 ## 安装步骤
 
+## 更新AEM版本
+10.0版本需要升级aem到最新版本，请现在宿主机环境执行:
+```shell
+sudo apt upate
+sudo apt install apollo-neo-env-manager-dev --reinstall
+```
+
 ### 初次安装
 如果第一次安装，请在`git clone`后执行以下命令：
 ```shell

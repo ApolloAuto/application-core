@@ -1,16 +1,4 @@
 sensor_meta {
-    name: "lidar16_left"
-    type: VELODYNE_16
-    orientation: LEFT_FORWARD
-}
-
-sensor_meta {
-    name: "lidar16_right"
-    type: VELODYNE_16
-    orientation: RIGHT_FORWARD
-}
-
-sensor_meta {
     name: "lidar16_back"
     type: VELODYNE_16
     orientation: PANORAMIC
@@ -24,25 +12,14 @@ sensor_meta {
 }
 
 sensor_meta {
-    name: "camera_front"
+    name: "camera_front_6mm"
     type: MONOCULAR_CAMERA
     orientation: FRONT
 }
 
 sensor_meta {
-    name: "camera_rear"
+    name: "camera_front_12mm"
     type: MONOCULAR_CAMERA
-    orientation: REAR
+    orientation: FRONT
 }
 
-sensor_meta {
-    name: "camera_left"
-    type: MONOCULAR_CAMERA
-    orientation: LEFT
-}
-
-sensor_meta {
-    name: "camera_right"
-    type: MONOCULAR_CAMERA
-    orientation: RIGHT
-}
