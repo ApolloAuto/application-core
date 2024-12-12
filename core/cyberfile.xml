@@ -67,7 +67,6 @@
   <depend repo_name="perception-camera-detection-multi-stage" type="binary">perception-camera-detection-multi-stage</depend>
   <depend repo_name="perception-camera-detection-single-stage" type="binary">perception-camera-detection-single-stage</depend>
   <depend repo_name="perception-camera-detection-bev" type="binary">perception-camera-detection-bev</depend>
-  <depend repo_name="perception-camera-detection-occupancy" type="binary">perception-camera-detection-occupancy</depend>
   <depend repo_name="perception-camera-location-estimation" type="binary">perception-camera-location-estimation</depend>
   <depend repo_name="perception-camera-location-refinement" type="binary">perception-camera-location-refinement</depend>
   <depend repo_name="perception-camera-tracking" type="binary">perception-camera-tracking</depend>
@@ -117,3 +116,6 @@
 
   <builder>bazel</builder>
 </package>
+
+
+
