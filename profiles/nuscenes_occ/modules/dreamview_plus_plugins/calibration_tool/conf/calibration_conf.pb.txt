@@ -5,7 +5,7 @@ lidar_calib { # lidar标定配置
         total: 200 # 采集的帧数
     }
     use_odometry: true # pose信息源，true（默认）：/apollo/sensor/gnss/odometry，false：/apollo/localization/pose
-    calibration_data_path: "/apollo/data/calibration/lidar_calibration"  # 每次标定创建{calibration_data_path}/{task_id}目录，里面包括采集数据(collection_data)和标定结果(result)目录
+    calibration_data_path: "data/calibration/lidar_calibration"  # 每次标定创建{calibration_data_path}/{task_id}目录，里面包括采集数据(collection_data)和标定结果(result)目录
     imu_frame_id: "imu"
     lidar_list [ # lidar列表
         { 
@@ -21,7 +21,7 @@ lidar_calib { # lidar标定配置
                 ty: 0.0
                 tz: 1.49
             }
-            output_filename: "/apollo/modules/perception/data/params/lidar16_back_extrinsics.yaml" # 标定结果文件路径(文件要存在并且有写入权限)
+            output_filename: "modules/perception/data/params/lidar16_back_extrinsics.yaml" # 标定结果文件路径(文件要存在并且有写入权限)
             is_bp: false #标定lidar是否为补盲lidar
         }
     ]
@@ -29,7 +29,7 @@ lidar_calib { # lidar标定配置
 }
 
 camera_calib { # camera标定配置
-    calibration_data_path: "/apollo/data/calibration/camera_calibration"  ## 每次标定创建{calibration_data_path}/{task_id}目录，里面包括采集数据(collection_data)和标定结果(result)目录
+    calibration_data_path: "data/calibration/camera_calibration"  ## 每次标定创建{calibration_data_path}/{task_id}目录，里面包括采集数据(collection_data)和标定结果(result)目录
     camera_list [ # camera列表
         {
             name: "camera_front_12mm" # camera名字，前端展示用
@@ -38,8 +38,8 @@ camera_calib { # camera标定配置
             lidar_channel: "/apollo/sensor/lidar16/back/PointCloud2" # lidar驱动输出的channel名字
             lidar_frame_id: "lidar16_back"
             lidar_rotation: 0 # lidar点云旋转角度，默认是0度，逆时针为正
-            intrinsics_filename: "/apollo/modules/perception/data/params/front_12mm_intrinsics.yaml" # 内参文件路径
-            output_filename: "/apollo/modules/perception/data/params/front_12mm_extrinsics.yaml" # 标定结果文件路径(文件要存在并且有写入权限)
+            intrinsics_filename: "modules/perception/data/params/front_12mm_intrinsics.yaml" # 内参文件路径
+            output_filename: "modules/perception/data/params/front_12mm_extrinsics.yaml" # 标定结果文件路径(文件要存在并且有写入权限)
             lidar_to_imu_extrinsic_file_path: "" #lidar-imu外参路径
         },
         {
@@ -49,8 +49,8 @@ camera_calib { # camera标定配置
             lidar_channel: "/apollo/sensor/lidar16/back/PointCloud2" # lidar驱动输出的channel名字
             lidar_frame_id: "lidar16_back"
             lidar_rotation: 0 # lidar点云旋转角度，默认是0度，逆时针为正
-            intrinsics_filename: "/apollo/modules/perception/data/params/front_6mm_intrinsics.yaml" # 内参文件路径
-            output_filename: "/apollo/modules/perception/data/params/front_6mm_extrinsics.yaml" # 标定结果文件路径(文件要存在并且有写入权限)
+            intrinsics_filename: "modules/perception/data/params/front_6mm_intrinsics.yaml" # 内参文件路径
+            output_filename: "modules/perception/data/params/front_6mm_extrinsics.yaml" # 标定结果文件路径(文件要存在并且有写入权限)
             lidar_to_imu_extrinsic_file_path: "" #lidar-imu外参路径
         }
     ]

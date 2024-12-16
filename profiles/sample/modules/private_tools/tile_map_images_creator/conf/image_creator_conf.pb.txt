@@ -6,7 +6,7 @@ reader_conf {
 traffic_light_detection_conf {
     camera_frame_id: "camera_front_6mm"
     camera_channel: "/apollo/sensor/camera/front_6mm/image"
-    camera_intrinsic_file_path: "/apollo/modules/perception/data/params/camera_front_6mm_intrinsics.yaml"
+    camera_intrinsic_file_path: "modules/perception/data/params/camera_front_6mm_intrinsics.yaml"
     car2stopline_max_distance: 5
     car2stopline_max_deg: 45
 }
@@ -41,15 +41,15 @@ matrix_generator_conf {
 
 input_output_conf {
     input_dir: "/apollo_workspace/data/record"
-    bin_output_dir: "/apollo/data/base_map/sample/map_bin"
-    images_output_dir: "/apollo/data/base_map/sample/map_images"
+    bin_output_dir: "data/base_map/sample/map_bin"
+    images_output_dir: "data/base_map/sample/map_images"
     use_LRU_cache: true
     LRU_cache_size: 20
 }
 
 slam_mode_selection_conf {
     enable_slam_mode: false
-    slam_pose_path: "/apollo/data/slam_tf/sample/slam_pose_result.bin"
+    slam_pose_path: "data/slam_tf/sample/slam_pose_result.bin"
 }
 
 coordinate_transformer_conf {

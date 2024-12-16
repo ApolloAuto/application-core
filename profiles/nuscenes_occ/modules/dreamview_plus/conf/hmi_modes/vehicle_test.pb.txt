@@ -1,7 +1,7 @@
 cyber_modules {
   key: "Transform"
   value: {
-    dag_files: "/apollo/modules/transform/dag/static_transform.dag"
+    dag_files: "modules/transform/dag/static_transform.dag"
     required_for_safety: false
     process_group: "static_transform"
   }
@@ -10,7 +10,7 @@ cyber_modules {
 cyber_modules {
   key: "GnssDriver"
   value: {
-    dag_files: "/apollo/modules/drivers/gnss/dag/gnss.dag"
+    dag_files: "modules/drivers/gnss/dag/gnss.dag"
     required_for_safety: false
     process_group: "gnss"
   }
@@ -19,7 +19,7 @@ cyber_modules {
 cyber_modules {
   key: "RtkLocalization"
   value: {
-    dag_files: "/apollo/modules/localization/dag/dag_streaming_rtk_localization.dag"
+    dag_files: "modules/localization/dag/dag_streaming_rtk_localization.dag"
     required_for_safety: false
     process_group: "localization"
   }
@@ -28,7 +28,7 @@ cyber_modules {
 cyber_modules {
   key: "LidarDrivers"
   value: {
-    dag_files: "/apollo/modules/drivers/lidar/dag/lidar.dag"
+    dag_files: "modules/drivers/lidar/dag/lidar.dag"
     required_for_safety: false
     process_group: "lidar"
   }
@@ -37,7 +37,7 @@ cyber_modules {
 cyber_modules {
   key: "RadarDrivers"
   value: {
-    dag_files: "/apollo/modules/drivers/radar/dag/radar.dag"
+    dag_files: "modules/drivers/radar/dag/radar.dag"
     required_for_safety: false
     process_group: "radar"
   }
@@ -46,7 +46,7 @@ cyber_modules {
 cyber_modules {
   key: "CameraDrivers"
   value: {
-    dag_files: "/apollo/modules/drivers/camera/dag/camera.dag"
+    dag_files: "modules/drivers/camera/dag/camera.dag"
     required_for_safety: false
     process_group: "camera"
   }
@@ -55,10 +55,10 @@ cyber_modules {
 modules {
   key: "LidarPerception"
   value: {
-    start_command: "nohup cyber_launch start /apollo/modules/perception/launch/perception_lidar.launch &"
-    stop_command: "nohup cyber_launch stop /apollo/modules/perception/launch/perception_lidar.launch &"
+    start_command: "nohup cyber_launch start modules/perception/launch/perception_lidar.launch &"
+    stop_command: "nohup cyber_launch stop modules/perception/launch/perception_lidar.launch &"
     process_monitor_config {
-      command_keywords: "start /apollo/modules/perception/launch/perception_lidar.launch"
+      command_keywords: "start modules/perception/launch/perception_lidar.launch"
     }
     required_for_safety: false
   }
@@ -67,7 +67,7 @@ modules {
 cyber_modules {
   key: "Prediction"
   value: {
-    dag_files: "/apollo/modules/prediction/dag/prediction.dag"
+    dag_files: "modules/prediction/dag/prediction.dag"
     required_for_safety: false
     process_group: "prediction"
   }
@@ -76,10 +76,10 @@ cyber_modules {
 modules {
   key: "TrafficLight"
   value: {
-    start_command: "nohup cyber_launch start /apollo/modules/perception/launch/perception_trafficlight.launch &"
-    stop_command: "nohup cyber_launch stop /apollo/modules/perception/launch/perception_trafficlight.launch &"
+    start_command: "nohup cyber_launch start modules/perception/launch/perception_trafficlight.launch &"
+    stop_command: "nohup cyber_launch stop modules/perception/launch/perception_trafficlight.launch &"
     process_monitor_config {
-      command_keywords: "start /apollo/modules/perception/launch/perception_trafficlight.launch"
+      command_keywords: "start modules/perception/launch/perception_trafficlight.launch"
     }
     required_for_safety: false
   }
@@ -88,7 +88,7 @@ modules {
 cyber_modules {
   key: "Planning"
   value: {
-    dag_files: "/apollo/modules/planning/planning_component/dag/planning.dag"
+    dag_files: "modules/planning/planning_component/dag/planning.dag"
     required_for_safety: false
     process_group: "planning"
   }
@@ -97,7 +97,7 @@ cyber_modules {
 cyber_modules {
   key: "ExternalCmd"
   value: {
-    dag_files: "/apollo/modules/external_command/process_component/dag/external_command_process.dag"
+    dag_files: "modules/external_command/process_component/dag/external_command_process.dag"
     required_for_safety: false
   }
 }
@@ -105,7 +105,7 @@ cyber_modules {
 cyber_modules {
   key: "TaskManager"
   value: {
-    dag_files: "/apollo/modules/task_manager/dag/task_manager.dag"
+    dag_files: "modules/task_manager/dag/task_manager.dag"
     required_for_safety: false
   }
 }
@@ -113,7 +113,7 @@ cyber_modules {
 cyber_modules {
   key: "Control"
   value: {
-    dag_files: "/apollo/modules/control/control_component/dag/control.dag"
+    dag_files: "modules/control/control_component/dag/control.dag"
     required_for_safety: false
     process_group: "control"
   }
@@ -122,7 +122,7 @@ cyber_modules {
 cyber_modules {
   key: "Canbus"
   value: {
-    dag_files: "/apollo/modules/canbus/dag/canbus.dag"
+    dag_files: "modules/canbus/dag/canbus.dag"
     required_for_safety: false
     process_group: "canbus"
   }

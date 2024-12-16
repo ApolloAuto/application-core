@@ -22,5 +22,5 @@ collect_strategy {
     train_percentage: 0.9 # 训练数据占比
     min_collection_percentage_to_calib: 0.8 # 允许计算结果的最小进度
 }
-calibration_data_path: "/apollo/data/calibration/vehicle_calibration"
-output_filename: "/apollo/modules/control/control_component/conf/calibration_table.pb.txt"
+calibration_data_path: "data/calibration/vehicle_calibration"
+output_filename: "modules/control/control_component/conf/calibration_table.pb.txt"
